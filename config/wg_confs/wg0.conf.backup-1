@@ -1,0 +1,37 @@
+[Interface]
+PrivateKey = cFboPJZO512QcxZz7MgWkVEC6V4XGxp5OYkdkn3Npmw=
+Address = 10.8.0.1/24
+ListenPort = 51820
+
+PostUp   = iptables -A INPUT -i wg0 -j ACCEPT; iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o ens5 -j MASQUERADE
+PostDown = iptables -D INPUT -i wg0 -j ACCEPT; iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -s 10.8.0.0/24 -o ens5 -j MASQUERADE
+
+# Peer 1: Monitoring Server
+[Peer]
+PublicKey = ifi1bdem85rnHXiXFIIYhrMO8ODKzN/ih/cRacoPDlc=
+AllowedIPs = 10.8.0.2/32, 10.0.1.0/24
+
+# Peer 2: DaloRadius
+[Peer]
+PublicKey = WhJZgKTZTG+/EQCxrTHlJN767yiLmL/5OJ4HxrcJ2yM=
+AllowedIPs = 10.8.0.3/32, 10.0.3.0/24
+
+# Peer 3: Router (GATEWAY untuk network kantor)
+[Peer]
+PublicKey = ggu1Sb/V++PL8I4N50LQD1T43/cNlZt9KgeNUKERxRQ=
+AllowedIPs = 10.8.0.4/32, 192.168.20.0/24
+
+# Peer 4: Laptop (Ray)
+[Peer]
+PublicKey = 83HQWuX60QmKZWZ7cqkxYbcF3zMbkOi9MEqKfFUmSQc=
+AllowedIPs = 10.8.0.5/32
+
+# Peer 5: Laptop (Dino)
+[Peer]
+PublicKey = L3ougDNfafliIYcdqqIVBYhX+pxqf35s3eIt3t9kVzQ=
+AllowedIPs = 10.8.0.6/32
+
+# Peer 6: Laptop (Faisal)
+[Peer]
+PublicKey = RetLHOBbdxHhn7nT5o0DxgU9ipmoiz7JvhBp9zGhSw0=
+AllowedIPs = 10.8.0.7/32
