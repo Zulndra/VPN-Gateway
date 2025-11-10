@@ -22,6 +22,9 @@ echo \
 
 sudo apt-get install docker-compose-plugin -y```
 
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+
 2. Clone repository ini:
 
 ```bash
