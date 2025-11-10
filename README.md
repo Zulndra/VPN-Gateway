@@ -9,8 +9,18 @@ Proyek ini menambahkan **Jenkins** ke dalam server VPN Gateway (WireGuard) untuk
 1. Pastikan sudah ada **Docker** & **Docker Compose** di server.
 
 ```bash
-sudo apt update && sudo apt install -y docker.io docker-compose
-```
+# Install Docker & Docker Compose
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg -y
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo $VERSION_CODENAME) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get install docker-compose-plugin -y```
 
 2. Clone repository ini:
 
